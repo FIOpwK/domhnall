@@ -1,0 +1,463 @@
+# Copyright 1999-2019 Gentoo Authors
+# Copyright 2016-2019 Amy Liffey
+# Copyright 2016-2019 Mikle Kolyada
+# This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 Unported License.
+# https://creativecommons.org/licenses/by-sa/3.0/
+
+Ebuild maintainer quiz
+Revision 2.22.8 - 7 January 2019
+
+Answer in whatever length necessary for completeness.
+Support your answers with documentation links but avoid redundant citation.
+Consult your mentor if you're unable to locate answers.
+
+Do not discuss these questions and their answers in public. Do not publish or
+share any private conversation with your mentor or recruiter.
+
+*** PART I Organizational structure questions
+
+
+1. When is it appropriate to post to the following mailing lists: gentoo-core,
+   gentoo-dev, gentoo-dev-announce, gentoo-project? Provide examples of topics
+   that are appropriate for each one of them.
+
+docs: gentoo.org
+
+2. Who should be contacted with complaints about specific developers or
+   projects? Shortly explain the procedure including all levels of appeal.
+
+docs: comrel policy
+
+3. What is the proper method for suggesting a wide-ranging feature or
+   enhancement to Gentoo? Describe the process for getting this feature
+   approved and implemented.
+
+docs: GLEPs
+
+4. What is the purpose of the Gentoo Council?
+
+docs: GLEPs
+
+5. What is the Gentoo Foundation? How does one apply for membership and
+   who are eligible?
+
+docs: gentoo.org
+
+6. What are projects? Who can start a new Gentoo project and how is it done?
+   What is the rationale behind this structure?
+
+docs: devmanual, GLEPs
+
+7. What is the devaway system? When should it be used and how to use it?
+
+docs: wiki
+
+*** PART II Ebuild technical/policy questions
+
+
+1. You change a package's ebuild to install an init script. Previously,
+   the package had no init script at all.
+   Is a revision bump necessary? Why? What about when adding a patch?
+   What about when adding a dependency?
+
+docs: devmanual
+
+2. A user submits a "live" VCS (git, svn ...) ebuild in order to obtain
+   a bugfix that has not been released yet. What would be a preferable
+   alternative to such an ebuild? What if there are numerous changes
+   involved?
+
+docs: devmanual
+
+3.a. What is repoman? When should it be used? How would you check for QA
+     problems with repoman?
+
+docs: devmanual, wiki
+
+3.b. A user submits a brand-new ebuild for a new package. What are
+     the proper steps (including repoman commands) to take to add
+     this ebuild to ::gentoo repository? What should be in the commit message?
+
+docs: devmanual, wiki
+
+4. A user submits an ebuild that has numerous technical problems and
+   violates policy. How would you handle that situation?
+
+docs: devmanual
+
+5. You have a set of new ebuilds that could potentially benefit
+   from a global USE flag. What steps should be taken before
+   a new USE flag is implemented? What should be done if the
+   USE flag only applies to a single package?
+
+docs: devmanual
+
+6. What steps are needed to remove a use flag from an ebuild?
+
+docs: common sense
+
+7. You are creating an ebuild. Unfortunately, the default 'emake
+   DESTDIR="${D}" install' call causes numerous access violations.
+   What are the best long-term and short-term solutions?
+
+docs: devmanual
+
+8. You are creating an ebuild that needs a patch. The patch is
+   nontrivially large - bigger than 20 KiB. Where should
+   the patch be kept?
+
+docs: devmanual
+
+9. You are creating an ebuild for a package whose license does not match
+   any of the licenses in the 'licenses' directory. What is the proper
+   course of action?
+
+docs: GLEPs, devmanual
+
+10.a. You wish to have an ebuild marked "stable," taking it out of
+      ~ARCH KEYWORDS. It's a library. What steps should be taken to do so?
+
+docs: devmanual
+
+10.b. You wish to mark an ebuild "testing," putting it into ~ARCH
+      KEYWORDS. It was previously hard-masked in package.mask.
+      What should be done prior to doing so?
+
+docs: devmanual
+
+10.c. You wish to have an ebuild marked "stable." It is a popular
+      application, but no other ebuilds depend on it.
+      How would you handle it?
+
+docs: devmanual
+
+11. What is the difference between different dependency classes (DEPEND,
+    RDEPEND and BDEPEND)? When should each of them be used? Provide examples.
+
+docs: devmanual
+
+12. You wish to make a change to an ebuild, but you checked the commit
+    messages and metadata.xml and it appears to be maintained by someone
+    else. How should you proceed?
+
+docs: devmanual
+
+13.a. You find a situation in which an eclass may be useful. What should
+      you do before implementing such an eclass?
+
+13.b. What is EXPORT_FUNCTIONS? How should it be used?
+      Provide examples of its usage.
+
+docs: devmanual
+
+14. How can you verify an ebuild has correct run time dependencies
+    (RDEPEND) for all installed binaries? Provide an example tool calls.
+
+docs:
+
+15. How do you deal with a situation in which an ebuild tries to
+    install a file that is already installed by another package?
+
+docs: devmanual
+
+16. Most configure scripts attempt to automatically determine
+    settings based on the host system. When should the ebuild
+    specifically override settings?
+
+docs: devmanual
+
+17. What is the EAPI version? How does it affect ebuilds and eclasses?
+
+docs: devmanual, PMS
+
+18. What is the procedure for removing packages from the tree?
+
+docs: devmanual
+
+19. How do keywording and stabilization policies for less often used arches
+    like ia64 or mips differ from the more common ones like amd64?
+
+docs: devmanual
+
+20. You are adding a new major version to the tree that requires users to
+    follow an upgrade guide. How will you communicate this to the users?
+
+docs: GLEPs
+
+21. What are sub-slots and their binding operators? What problem do they
+    solve in gentoo and when should be used? Provide examples.
+
+docs: wiki, portage documentation
+
+22.a. You are about to add a new package. How would you determine the correct
+      LICENSE? What sources should be consulted for license information,
+      and which take precedence?
+
+docs: devmanual
+
+22.b. The package frobnicate has a 'COPYING' that exactly matches GPL-3.
+      However, all the source files have the following copyright notice:
+
+
+      This program is free software; you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation; either version 2 of the License, or
+      (at your option) any later version.
+
+      What should be the value of LICENSE variable for this package?
+
+docs: devmanual
+
+22.c. The package installs both frobnicate executable (licensed GPL-3+)
+      and libfrobnicate shared library (licensed LGPL-2.1+). What should
+      be the correct value of LICENSE for this package?
+
+docs: devmanual
+
+22.d. The package installs frobnicate executable whose sources indicate GPL-3+
+      license. However, you notice that the build process creates a local
+      static libport.a library that is used to build a part of frobnicate
+      but is not meant to be installed. The sources of libport.a indicate
+      LGPL-2.1+ license. What should be the value of LICENSE for this package?
+
+docs: devmanual
+
+22.e. A MIT-licensed package includes a CDDL-licensed script. The script is
+      not installed but it is used during build to generate a Makefile. What
+      should be the value of LICENSE for this package?
+
+docs: common sense
+
+22.f. A BSD-licensed package installs a frobnicate executable. However, after
+      inspecting the package sources you notice that it uses a single source
+      file whose license indicates GPL-2+. What would you do? What could be
+      the LICENSE for this package?
+
+*** PART ||| Code questions
+
+
+1. You are writing an ebuild for the foomatic package. Upstream calls
+   the current version "1.3-7b" (but this is _not_ a beta release).
+   How would the ebuild be named? What's wrong with the ebuild
+   snippet below and how should this be written to aid
+   maintainability?
+
+  SRC_URI="https://foomatic.example.com/download/foomatic-1.3-7b.tar.bz2"
+  S=${WORKDIR}/foomatic-1.3-7b
+
+docs: devmanual
+
+2. You have a patch for foomatic which adds TLS support using either
+   OpenSSL or LibreSSL libraries.
+   The dependency is optional and controlled at build time.
+   Assuming that foomatic uses an autotools based build system
+   provide most probable changes required in an EAPI=7 ebuild.
+
+docs: devmanual
+
+3. What's the difference between global and phase scope in an ebuild?
+
+docs: PMS
+
+4. Why should an external application (for example sed/grep) not be
+   called in global scope? What alternative methods can be used?
+
+docs: devmanual
+
+5. What is wrong with using $(somecommand) or `somecommand` or $ARCH
+   inside SRC_URI, DEPEND, etc?
+
+docs: devmanual
+
+6. Explain what's incorrect about the following code snippets and suggest
+   an alternative.
+
+6.a
+  # Upstream does not support user-specified CFLAGS
+  unset CFLAGS
+
+docs: devmanual
+
+6.b
+  # Extra settings for when SSL is enabled
+  if [ "`use ssl `" ] ; then
+   # blah
+  fi
+
+docs: devmanual
+
+6.c
+  # Extra options for configure
+  use jpeg && myconf="--enable-jpeg" \
+   || myconf="--disable-jpeg"
+  use png && myconf="${myconf} --enable-png" \
+   || myconf="${myconf} --disable-png"
+  use gif && myconf="${myconf} --enable-gif89a" \
+   || myconf="${myconf} --disable-gif89a"
+  econf ${myconf}
+
+docs: devmanual
+
+6.d
+  # If we USE foo, we need to DEPEND upon libfoo. Unfortunately
+  # libfoo is completely broken on some archs
+  DEPEND="!x86? ( !amd64? ( !ppc? ( foo? ( >=dev-libs/libfoo-1.2 ) ) ) )"
+
+docs: devmanual
+
+6.e
+  # If USE=fnord is enabled, make extra targets:
+  use fnord && ( emake fnordification || die "it broke" )
+
+docs: devmanual
+
+
+7. You're writing an ebuild and init script for a server application
+   that needs networking to be available when started and can also
+   use a system logger if one is available. How should this be
+   written in the init script?
+
+docs: devmanual
+
+8. What is the 'Gentoo way' of allowing the user to pass other options
+   to the previously mentioned server application?
+
+docs: devmanual
+
+9. What is the 'Gentoo way' of globally setting environment variables
+    for all users?
+
+docs: devmanual
+
+10. Which directory should manual (man) pages be in and how should they
+    be installed from an ebuild?
+
+docs: PMS
+
+11. On Gentoo Linux systems, what is the purpose of /usr/local/bin?
+
+docs: devmanual
+
+12. When should you use || die "msg" with commands/functions?
+    Could || die always be moved inside those functions/commands?
+
+docs: devmanual
+
+13.a. You are committing a new package to the tree. What will you have in
+      the KEYWORDS variable?
+
+docs: devmanual
+
+13.b. You are bumping foomatic's ebuild from version 1.2 to version
+      1.3. The new release contains bugfixes and new
+      functionality. The current KEYWORDS for 1.2 are
+      "x86 sparc ~mips amd64" -- what will KEYWORDS be for
+      the new 1.3 ebuild?
+
+docs: devmanual
+
+13.c. You are bumping foomatic's ebuild from version 1.3 to 1.4. The
+      new release extends functionality and introduces a new
+      dependency on libfnord version 1.2 or later. The
+      KEYWORDS for foomatic-1.3 are "x86 sparc ~mips amd64"
+      and the KEYWORDS for libfnord-1.2 are "x86 ~sparc" --
+      what will you do?
+
+docs: devmanual
+
+13.d. You are bumping foomatic's ebuild from version 1.4 to 1.5. This
+      release introduces new optional support for the libgerbil
+      library, which you are controlling via the gerbil global
+      USE flag. Unfortunately libgerbil is full of code which
+      doesn't work properly on big endian systems, and so has
+      "-sparc -mips" in the KEYWORDS. How will you handle this?
+
+docs: devmanual
+
+13.e. You are bumping foomatic's ebuild from version 1.5 to version
+      2.0. This new version is a massive rewrite which introduces
+      huge changes to the build system, the required libraries
+      and how the code works. What will you do for KEYWORDS here?
+
+docs: devmanual
+
+14. Your package fails to build with older versions of GCC (e.g. GCC < 4.7).
+    How do you ensure that the user uses an appropriate compiler to build the
+    package? Under which circumstances should you avoid this check and how?
+
+docs: devmanual
+
+15. When should USE flags be used? What are the cases where they should be
+    avoided? Consider the following examples. Explain what is wrong in them
+    and how would you improve them.
+
+docs: devmanual, common sense
+
+15.a. A large C++ application with long build time has:
+
+  # libcxx can be optionally used at run time via -stdlib=libc++
+  IUSE="libcxx"
+  DEPEND=""
+  RDEPEND="libcxx? ( dev-libs/libcxx )"
+
+15.b. A large package with long build time has:
+
+  inherit bash-completion-r1
+  IUSE="bash-completion"
+
+  src_install() {
+    default
+    use bash-completion && dobashcomp contrib/bash-completion/foo
+  }
+
+15.c. A package unconditionally installs 'foobar' executable which links
+      to libbar. The ebuild maintainer wanted to make it optional.
+      He used the following code:
+
+  IUSE="foobar"
+  RDEPEND="foobar? ( dev-libs/libbar )"
+  DEPEND="${RDEPEND}"
+
+  src_install() {
+    default
+    if ! use foobar; then
+      rm "${ED}"/usr/bin/foobar || die
+    fi
+  }
+
+15.d. A package has numerous configure switches which control a number
+      of optional features. All of them are enabled by default. They do
+      not have any external dependencies, and do not affect the package
+      size significantly. The ebuild author has added over 20 local USE
+      flags to control all of them.
+
+
+
+*** Please also submit the following information:
+
+* Please make sure your OpenPGP public keyblock is available on the keyserver network
+  hkp://pool.sks-keyservers.net and provide the fingerprint of it below
+  You should sign your quizzes with your key
+  https://wiki.gentoo.org/wiki/Project:Gentoo-keys/Generating_GLEP_63_based_OpenPGP_keys
+  https://wiki.gentoo.org/wiki/GnuPG
+
+* SSH public key (if you do not have one, please create one)
+  https://wiki.gentoo.org/wiki/Project:Infrastructure/SSH_Key_Guide
+  If you don't paste your key inline, make sure it's signed by your
+  gpg key.
+
+* Date of birth
+
+* Where do you live (Town/City, Country)
+
+* What are your programming/scripting skills, if applicable?
+
+* What other areas are you experienced in?
+
+* What other projects have you contributed to, if any?
+
+* Tell us about yourself. This doesn't need to be strictly
+  computer-relevant; things like where you're from,
+  hobbies, job, family, interests... This information will be used
+  for your public new developer announcement so please mention if
+  something should not be part of that.
