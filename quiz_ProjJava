@@ -1,0 +1,79 @@
+# Ant fun
+
+Q1. build.sysclasspath
+
+Q1.1. What effect does the property build.sysclasspath=ignore have?
+
+Q1.2. Why would we want to use it?
+
+Q1.3. How would it 'break' packages?
+
+Q1.4. How do you fix these breakages?
+
+Q2. An ant build has a 'get-deps' target that always gets called to download the dependencies.
+
+Q2.1. Why is this bad?
+
+Q2.2. How can it be fixed?
+
+Q3. What should be done if a build.xml has targets that are always executed and you either don't want to execute or want to control that behavior via use flag or other means?
+
+Q4. How should you handle a build.xml file that uses the available task to decide what features to turn on?
+Classpath
+
+Q1. You have a launcher that does java -classpath /usr/share/foo/lib/foo.jar -jar /usr/share/bar/lib/bar.jar. When this is launched, it fails to find some classes from foo.jar.
+
+Q1.1. Why is this happening?
+
+Q1.2. What is one way to fix it?
+
+Q2. User/system classpath
+
+Q2.1. Why is using java-config ability to set a user / system classpath deprecated?
+
+Q2.2. How do you manually set a global classpath without using java-config?
+Ebuilds
+
+Q1. How do you add optional Java support to an ebuild?
+
+Q2. Why is it important to use the Java eclasses for anything that has anything to do with Java?
+
+Q3. How would you test a package using a specific virtual machine?
+
+Q4. Are you allowed to turn off build.xml rewriting if so, when?
+
+Q5. You have a package that needs to build some JNI stuff. How do you get the appropriate CFLAGS?
+
+Q6. You want your package to have a script to launch the foo.Bar class. How would you create this?
+
+Q7. How should you handle unit tests?
+
+Q8. How would you provide jars to packages that have them bundled in their sources or have ant download them?
+
+Q9. What should be done if a package can't be compiled as 1.4 source/target.
+
+Q10. You want to package something new and the package users maven as the build system. How will you handle this?
+
+Q11. How do you install the following:
+
+Q11.1. foobar-3.0.jar
+
+Q11.2. docs/javadoc
+
+Q11.3. jnilibrary.so
+
+Q11.4. docs/index.html, docs/foobar.html
+
+Q11.5. examples/*
+
+Q12. Why is JAVA_PKG_IUSE used?
+The Java system
+
+Q1. What's the difference between java-ant-2, java-pkg-2, java-pkg-opt-2, and java-utils-2? When would it be appropriate to use each?
+
+Q2. What was the big deal about Java 1.5? Why did it take so long to become unmasked?
+
+Q3. Will the new Java system support Java 1.6 when it is released? Java 1.7?
+Java policies
+
+Q1. Describe our policy regarding bundled jars. 
